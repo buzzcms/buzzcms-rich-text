@@ -15,6 +15,7 @@ import {
 import { jsx } from 'theme-ui'
 
 import { Element } from './Element'
+import { withHtml } from './plugins/withHtml'
 import { withLinks } from './plugins/withLinks'
 import { withGalleries } from './withGalleries'
 import { withImages } from './withImages'
@@ -92,7 +93,9 @@ export default function RichText({
       withGalleries(
         withTabs(
           withLinks(
-            withImages(withShortcuts(withReact(withHistory(createEditor())))),
+            withHtml(
+              withImages(withShortcuts(withReact(withHistory(createEditor())))),
+            ),
           ),
         ),
       ),
