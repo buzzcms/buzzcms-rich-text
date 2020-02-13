@@ -5,6 +5,7 @@ import RichText from '../src/components/RichText'
 import { galleries } from './data/galleries'
 import { image } from './data/image'
 import { list } from './data/list'
+import { tab } from './data/tab'
 import StoryWrapper from './StoryWrapper'
 
 export default {
@@ -43,4 +44,12 @@ export const Image = () => {
 
 Image.story = {
   name: 'Image',
+}
+
+export const Tab = () => {
+  return <Editor initialValue={tab} />
+}
+
+Tab.story = {
+  name: 'Tab',
 }

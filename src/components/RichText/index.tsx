@@ -7,8 +7,10 @@ import { Editable, Slate, useEditor, withReact } from 'slate-react'
 import { jsx } from 'theme-ui'
 
 import { Element } from './Element'
-import { withGalleries, withImages } from './withImages'
+import { withGalleries } from './withGalleries'
+import { withImages } from './withImages'
 import { withShortcuts } from './withShortcuts'
+import { withTabs } from './withTabs'
 
 export function Panel() {
   const editor = useEditor()
@@ -36,7 +38,9 @@ export default function RichText({
   const editor = useMemo(
     () =>
       withGalleries(
-        withImages(withShortcuts(withReact(withHistory(createEditor())))),
+        withTabs(
+          withImages(withShortcuts(withReact(withHistory(createEditor())))),
+        ),
       ),
     [],
   )
@@ -63,6 +67,10 @@ export default function RichText({
             bg: 'yellow',
             mx: 0,
             p: 3,
+          },
+          '[data-reach-tab-panel]': {
+            p: 3,
+            bg: '#efefef',
           },
         }}
       >

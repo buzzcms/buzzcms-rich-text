@@ -1,7 +1,7 @@
 import { Editor, Point, Range, Transforms } from 'slate'
 import { ReactEditor } from 'slate-react'
 
-export const SHORTCUTS = {
+export const SHORTCUTS: { [key: string]: string } = {
   '*': 'list-item',
   '-': 'list-item',
   '+': 'list-item',

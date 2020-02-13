@@ -22,14 +22,6 @@ export const isImageUrl = (url: string) => {
   return ext && imageExtensions.includes(ext)
 }
 
-export function withGalleries(editor: ReactEditor) {
-  const { isVoid } = editor
-  editor.isVoid = element => {
-    return element.type === 'galleries' ? true : isVoid(element)
-  }
-  return editor
-}
-
 export function withImages(editor: ReactEditor) {
   const { insertData, isVoid } = editor
   editor.isVoid = element => {

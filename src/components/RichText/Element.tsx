@@ -1,10 +1,12 @@
 /** @jsx jsx */
+import '@reach/tabs/styles.css'
 
+import { TabPanel } from '@reach/tabs'
 import { RenderElementProps } from 'slate-react'
 import { jsx } from 'theme-ui'
 
 import { GalleriesElement } from './GalleriesElement'
-// import { ImageElement } from './ImageElement'
+import { Tabs } from './TabList'
 
 export function Element(props: RenderElementProps) {
   const { attributes, children, element } = props
@@ -29,8 +31,10 @@ export function Element(props: RenderElementProps) {
       return <li {...attributes}>{children}</li>
     case 'galleries':
       return <GalleriesElement {...props} />
-    // case 'image':
-    //   return <ImageElement {...props} />
+    case 'tabs':
+      return <Tabs {...props} />
+    case 'tab-panel':
+      return <TabPanel {...props} />
     case 'img':
       return (
         <div {...attributes}>
