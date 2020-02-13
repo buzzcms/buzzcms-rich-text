@@ -5,7 +5,11 @@ export const list = [
     children: [
       {
         type: 'list-item',
-        children: [{ text: 'Our Pick for best coffee subscription 2020' }],
+        children: [
+          { text: 'Our Pick for ' },
+          { text: 'best coffee', bold: true },
+          { text: ' subscription 2020' },
+        ],
       },
       {
         type: 'list-item',

@@ -1,9 +1,17 @@
 /** @jsx jsx */
 
+import isHotkey from 'is-hotkey'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { createEditor, Node } from 'slate'
+import { createEditor, Editor, Node } from 'slate'
 import { withHistory } from 'slate-history'
-import { Editable, Slate, useEditor, withReact } from 'slate-react'
+import {
+  Editable,
+  ReactEditor,
+  RenderLeafProps,
+  Slate,
+  useEditor,
+  withReact,
+} from 'slate-react'
 import { jsx } from 'theme-ui'
 
 import { Element } from './Element'
@@ -27,6 +35,48 @@ export function Panel() {
   )
 }
 
+const HOTKEYS: { [key: string]: string } = {
+  'mod+b': 'bold',
+  'mod+i': 'italic',
+  'mod+u': 'underline',
+  'mod+`': 'code',
+}
+
+const Leaf = ({ attributes, children, leaf }: RenderLeafProps) => {
+  if (leaf.bold) {
+    children = <strong>{children}</strong>
+  }
+
+  if (leaf.code) {
+    children = <code>{children}</code>
+  }
+
+  if (leaf.italic) {
+    children = <em>{children}</em>
+  }
+
+  if (leaf.underline) {
+    children = <u>{children}</u>
+  }
+
+  return <span {...attributes}>{children}</span>
+}
+
+const isMarkActive = (editor: ReactEditor, format: string) => {
+  const marks = Editor.marks(editor)
+  return marks ? marks[format] === true : false
+}
+
+const toggleMark = (editor: ReactEditor, format: string) => {
+  const isActive = isMarkActive(editor, format)
+
+  if (isActive) {
+    Editor.removeMark(editor, format)
+  } else {
+    Editor.addMark(editor, format, true)
+  }
+}
+
 export default function RichText({
   value,
   onChange,
@@ -35,7 +85,8 @@ export default function RichText({
   onChange: (value: Node[]) => void
 }) {
   const renderElement = useCallback(props => <Element {...props} />, [])
-  // const [selection, setSelection] = useState<Range | null>(null)
+  const renderLeaf = useCallback(props => <Leaf {...props} />, [])
+
   const editor = useMemo(
     () =>
       withGalleries(
@@ -79,9 +130,19 @@ export default function RichText({
       >
         <Editable
           renderElement={renderElement}
+          renderLeaf={renderLeaf}
           placeholder="Write some markdown..."
           spellCheck
           autoFocus
+          onKeyDown={(event: any) => {
+            for (const hotkey in HOTKEYS) {
+              if (isHotkey(hotkey, event)) {
+                event.preventDefault()
+                const mark = HOTKEYS[hotkey]
+                toggleMark(editor, mark)
+              }
+            }
+          }}
         />
       </div>
     </Slate>
