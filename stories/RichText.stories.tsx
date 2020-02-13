@@ -3,6 +3,8 @@ import { Node } from 'slate'
 
 import RichText from '../src/components/RichText'
 import { galleries } from './data/galleries'
+import { image } from './data/image'
+import { list } from './data/list'
 import StoryWrapper from './StoryWrapper'
 
 export default {
@@ -13,6 +15,7 @@ function Editor({ initialValue }: { initialValue: Node[] }) {
   const [value, setValue] = useState<Node[]>(initialValue)
   return (
     <StoryWrapper>
+      <button onClick={() => console.log(JSON.stringify(value))}>Print</button>
       <RichText value={value} onChange={setValue} />
     </StoryWrapper>
   )
@@ -24,4 +27,20 @@ export const Galleries = () => {
 
 Galleries.story = {
   name: 'Galleries',
+}
+
+export const List = () => {
+  return <Editor initialValue={list} />
+}
+
+List.story = {
+  name: 'List',
+}
+
+export const Image = () => {
+  return <Editor initialValue={image} />
+}
+
+Image.story = {
+  name: 'Image',
 }

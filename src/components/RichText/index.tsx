@@ -45,11 +45,9 @@ export default function RichText({
     <Slate
       editor={editor}
       value={value}
-      onChange={(v: any) => {
+      onChange={v => {
         onChange(v)
-        // setSelection(editor.selection)
       }}
-      // selection={selection}
     >
       <div
         sx={{
@@ -57,6 +55,10 @@ export default function RichText({
           p: 3,
           maxWidth: 960,
           mx: 'auto',
+          ul: {
+            listStyle: 'disc',
+            margin: '0 0 1.5em 3em',
+          },
           blockquote: {
             bg: 'yellow',
             mx: 0,
