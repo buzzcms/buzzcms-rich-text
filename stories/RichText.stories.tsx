@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Node } from 'slate'
 
 import RichText from '../src/components/RichText'
+import { full } from './data/full'
 import { galleries } from './data/galleries'
 import { image } from './data/image'
 import { list } from './data/list'
@@ -27,37 +28,22 @@ export const Galleries = () => {
   return <Editor initialValue={galleries} />
 }
 
-Galleries.story = {
-  name: 'Galleries',
-}
-
 export const List = () => {
   return <Editor initialValue={list} />
-}
-
-List.story = {
-  name: 'List',
 }
 
 export const Image = () => {
   return <Editor initialValue={image} />
 }
 
-Image.story = {
-  name: 'Image',
-}
-
 export const Tab = () => {
   return <Editor initialValue={tab} />
 }
 
-Tab.story = {
-  name: 'Tab',
-}
 export const Video = () => {
   return <Editor initialValue={video} />
 }
 
-Video.story = {
-  name: 'Video',
+export const Full = () => {
+  return <Editor initialValue={full} />
 }
