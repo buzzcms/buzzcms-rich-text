@@ -9,7 +9,11 @@ import {
 import { RenderElementProps } from 'slate-react'
 import { jsx } from 'theme-ui'
 
-export function Tabs({ attributes, children, element }: RenderElementProps) {
+export function TabsElement({
+  attributes,
+  children,
+  element,
+}: RenderElementProps) {
   const items: { title: string }[] = element.items
   return (
     <ReachTabs {...attributes}>

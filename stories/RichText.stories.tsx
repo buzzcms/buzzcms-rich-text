@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Node } from 'slate'
 
-import RichText from '../src/components/RichText'
+import RichText from '../src/components'
 import { full } from './data/full'
 import { galleries } from './data/galleries'
 import { image } from './data/image'

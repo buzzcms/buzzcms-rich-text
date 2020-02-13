@@ -5,9 +5,9 @@ import { TabPanel } from '@reach/tabs'
 import { RenderElementProps } from 'slate-react'
 import { jsx } from 'theme-ui'
 
+import { Video } from '../Video'
 import { GalleriesElement } from './GalleriesElement'
-import { Tabs } from './TabList'
-import { Video } from './Video'
+import { TabsElement } from './TabsElement'
 
 export function Element(props: RenderElementProps) {
   const { attributes, children, element } = props
@@ -16,6 +16,8 @@ export function Element(props: RenderElementProps) {
       return <blockquote {...attributes}>{children}</blockquote>
     case 'bulleted-list':
       return <ul {...attributes}>{children}</ul>
+    case 'numbered-list':
+      return <ol {...attributes}>{children}</ol>
     case 'link':
       return (
         <a {...attributes} href={element.url}>
@@ -39,7 +41,7 @@ export function Element(props: RenderElementProps) {
     case 'galleries':
       return <GalleriesElement {...props} />
     case 'tabs':
-      return <Tabs {...props} />
+      return <TabsElement {...props} />
     case 'tab-panel':
       return <TabPanel {...props} />
     case 'video':
