@@ -35,7 +35,14 @@ export function GalleriesElement({
                   }}
                 />
               </div>
-              <div sx={{ fontSize: 12, px: 2, py: 1, bg: '#f2f2f2' }}>
+              <div
+                sx={{
+                  fontSize: 12,
+                  px: 2,
+                  py: 2,
+                  bg: '#f2f2f2',
+                }}
+              >
                 {x.caption}
               </div>
             </div>

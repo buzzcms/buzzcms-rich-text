@@ -121,9 +121,12 @@ export default function RichText({
             margin: '0 0 1.5em 3em',
           },
           blockquote: {
-            bg: 'yellow',
+            borderLeft: '4px solid #1D4E89',
+            bg: '',
             mx: 0,
-            p: 3,
+            px: 3,
+            color: '#1D4E89',
+            fontStyle: 'italic',
           },
           '[data-reach-tab-panel]': {
             p: 3,

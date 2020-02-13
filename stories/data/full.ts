@@ -6,11 +6,104 @@ export const full = [
     children: [{ text: 'Reviews - Top 5 Beer Fridges to Buy - Update 2017' }],
   },
   {
+    type: 'tabs',
+    items: [
+      { title: 'Top affordable' },
+      { title: 'Best materials' },
+      { title: 'Exclusive sale' },
+    ],
+    children: [
+      {
+        type: 'tab-panel',
+        children: [
+          {
+            type: 'paragraph',
+            children: [
+              {
+                text: 'This is end of the tab',
+              },
+            ],
+          },
+          {
+            type: 'galleries',
+            items: [
+              { id: 1, caption: 'Product 01', src },
+              { id: 2, caption: 'Product 02', src },
+              { id: 3, caption: 'Product 03', src },
+              { id: 4, caption: 'Product 04', src },
+              { id: 5, caption: 'Product 05', src },
+              { id: 6, caption: 'Product 06', src },
+              { id: 5, caption: 'Product 07', src },
+              { id: 6, caption: 'Product 08', src },
+            ],
+            children: [{ text: '' }],
+          },
+        ],
+      },
+      {
+        type: 'tab-panel',
+        children: [
+          {
+            type: 'paragraph',
+            children: [
+              {
+                text: 'This is the second tabs',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: 'tab-panel',
+        children: [
+          {
+            type: 'paragraph',
+            children: [
+              {
+                text: 'This is the third tabs',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     type: 'paragraph',
+    children: [
+      {
+        text: 'This is end of the tab',
+      },
+    ],
+  },
+  {
+    type: 'heading-two',
+    children: [{ text: 'Easily Embed Image Gallery to Content' }],
+  },
+  {
+    type: 'galleries',
+    items: [
+      { id: 1, caption: 'Image 01', src },
+      { id: 2, caption: 'Image 02', src },
+      { id: 3, caption: 'Image 03', src },
+      { id: 4, caption: 'Image 04', src },
+      { id: 5, caption: 'Image 05', src },
+      { id: 6, caption: 'Image 06', src },
+      { id: 5, caption: 'Image 07', src },
+      { id: 6, caption: 'Image 08', src },
+    ],
+    children: [{ text: '' }],
+  },
+  {
+    type: 'block-quote',
     children: [
       {
         text:
           'For those that entertain guests on the game day, or just need a personal vault to turn to when you need to crack a brew open after a long day, finding the best beer fridge is always an investment.',
+      },
+      {
+        text: 'bestfridereview.com',
+        bold: true,
       },
     ],
   },
@@ -193,6 +286,19 @@ export const full = [
     type: 'paragraph',
     children: [{ text: 'This is an example of thermoelectric refrigerator:' }],
   },
+  {
+    type: 'figure',
+    children: [
+      {
+        type: 'img',
+        src:
+          'http://bestfridgereview.com/img/Cooluli-Electric-Portable-Thermoelectric-System.jpg',
+        children: [{ text: '' }],
+        alt: 'thermoelectric-refrigerator',
+      },
+      { type: 'figcaption', children: [{ text: 'Photo Source' }] },
+    ],
+  },
   { type: 'heading-three', children: [{ text: '3. Temperature control.' }] },
   {
     type: 'paragraph',
@@ -369,14 +475,14 @@ export const full = [
       },
     ],
   },
-  { type: 'heading-two', children: [{ text: '' }] },
   {
     type: 'figure',
     children: [
       {
         type: 'img',
-        src: 'https://source.unsplash.com/1600x900/?nature,water',
+        src: 'http://bestfridgereview.com/img/Igloo-customer-review-4.png',
         children: [{ text: '' }],
+        alt: '',
       },
       {
         type: 'figcaption',
@@ -384,5 +490,111 @@ export const full = [
       },
     ],
   },
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text:
+          'Notice that the Igloo is a conventional mini fridge with a small freezer up top. That means temperatures up top are going to be colder than at the bottom, so be careful when positioning your beer—cans may start to freeze if they’re on the top row for too long. It fits an impressive 100 cans, so you can even use some of that space for salsa and onion dip, some of deli cuts. Also note that the Igloo FR329 does not come with an interior light. But being all white inside in its size makes it very user-friendly.\n',
+      },
+    ],
+  },
+  {
+    type: 'figure',
+    children: [
+      {
+        type: 'img',
+        src: 'http://bestfridgereview.com/img/Igloo-customer-review-2.png',
+        children: [{ text: '' }],
+        alt: '',
+      },
+      {
+        type: 'figcaption',
+        children: [{ text: 'You can edit the caption here' }],
+      },
+    ],
+  },
+  { type: 'paragraph', children: [{ text: 'Pros:', bold: true }] },
+  {
+    type: 'bulleted-list',
+    children: [
+      {
+        type: 'list-item',
+        children: [
+          {
+            text:
+              'Perfect design for easily blending in with any man cave or office.',
+          },
+        ],
+      },
+      {
+        type: 'list-item',
+        children: [
+          {
+            text:
+              'One of the best-priced fridges for its cooling capability, size, and design.',
+          },
+        ],
+      },
+      {
+        type: 'list-item',
+        children: [
+          {
+            text:
+              'Keeps beverages and more ice cold despite any outside climate.',
+          },
+        ],
+      },
+      {
+        type: 'list-item',
+        children: [
+          {
+            text:
+              'The caster wheels allow you to move this toolbox everywhere effortlessly.',
+          },
+        ],
+      },
+      { type: 'list-item', children: [{ text: 'Quiet operation' }] },
+    ],
+  },
+  { type: 'paragraph', children: [{ text: 'Cons:', bold: true }] },
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text:
+          'The most common complaints come from the packaging and the dented exterior metal sheeting. Be careful, find Igloo a safe place far from heavy tools and equipment.',
+      },
+    ],
+  },
+  {
+    type: 'heading-two',
+    children: [
+      {
+        text:
+          '2. The Best with Glass Door: Danby DBC120BLS 120 Can Beverage Center',
+      },
+    ],
+  },
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text:
+          'Currently being the Amazon’s #1 best-seller, Danby DBC120BLS is the perfect choice for those who want to host the party for big sporting events, whether they are Olympics, football or hockey finals. When friends and family stop by, you want to serve them the cold beverages while watching TV together or just enjoying the company, don’t you?',
+      },
+    ],
+  },
+  { type: 'paragraph', children: [{ text: '\n[[shortcode here]]' }] },
   { type: 'paragraph', children: [{ text: '' }] },
+  {
+    type: 'paragraph',
+    children: [
+      {
+        text:
+          'The Danby 120 is lauded as one of the best beverage cooler for its price point and durability for storing beer and other drinks. Unlike many of its competitors in its price range, the majority of the costs go toward its design elements from its steel materials to its relatively light weight. Not to mention, it is much more indiscreet in how well it can blend in any room yet still be eye-catching depending on its location, this stainless steel fridge is spacious with the capability of holding over a hundred cans.',
+      },
+    ],
+  },
+  { type: 'paragraph', children: [{ text: '\n\n' }] },
 ]

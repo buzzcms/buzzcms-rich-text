@@ -63,16 +63,17 @@ export function Element(props: RenderElementProps) {
         </div>
       )
     case 'figure':
-      return (
-        <figure
-          {...props}
-          sx={{ mx: 'auto', maxWidth: 640, border: '1px solid gray' }}
-        />
-      )
+      return <figure {...props} sx={{ mx: 'auto', maxWidth: 640 }} />
     case 'figcaption':
       return (
         <figcaption
-          sx={{ px: 2, py: 1, bg: 'lightgrey', textAlign: 'center' }}
+          sx={{
+            px: 2,
+            py: 1,
+            textAlign: 'center',
+            fontStyle: 'italic',
+            color: 'gray',
+          }}
           {...props}
         />
       )
