@@ -1,4 +1,4 @@
-import { Editor, Point, Range, Transforms } from 'slate'
+import { Editor, Range, Transforms } from 'slate'
 import { ReactEditor } from 'slate-react'
 
 export const SHORTCUTS: { [key: string]: string } = {
@@ -15,7 +15,7 @@ export const SHORTCUTS: { [key: string]: string } = {
 }
 
 export function withShortcuts(editor: ReactEditor) {
-  const { deleteBackward, insertText } = editor
+  const { insertText } = editor
   editor.insertText = text => {
     const { selection } = editor
     if (text === ' ' && selection && Range.isCollapsed(selection)) {
@@ -47,30 +47,31 @@ export function withShortcuts(editor: ReactEditor) {
     }
     insertText(text)
   }
-  editor.deleteBackward = (...args) => {
-    const { selection } = editor
-    if (selection && Range.isCollapsed(selection)) {
-      const match = Editor.above(editor, {
-        match: n => Editor.isBlock(editor, n),
-      })
-      if (match) {
-        const [block, path] = match
-        const start = Editor.start(editor, path)
-        if (
-          block.type !== 'paragraph' &&
-          Point.equals(selection.anchor, start)
-        ) {
-          Transforms.setNodes(editor, { type: 'paragraph' })
-          if (block.type === 'list-item') {
-            Transforms.unwrapNodes(editor, {
-              match: n => n.type === 'bulleted-list',
-            })
-          }
-          return
-        }
-      }
-      deleteBackward(...args)
-    }
-  }
+
+  // editor.deleteBackward = (...args) => {
+  //   const { selection } = editor
+  //   if (selection && Range.isCollapsed(selection)) {
+  //     const match = Editor.above(editor, {
+  //       match: n => Editor.isBlock(editor, n),
+  //     })
+  //     if (match) {
+  //       const [block, path] = match
+  //       const start = Editor.start(editor, path)
+  //       if (
+  //         block.type !== 'paragraph' &&
+  //         Point.equals(selection.anchor, start)
+  //       ) {
+  //         Transforms.setNodes(editor, { type: 'paragraph' })
+  //         if (block.type === 'list-item') {
+  //           Transforms.unwrapNodes(editor, {
+  //             match: n => n.type === 'bulleted-list',
+  //           })
+  //         }
+  //         return
+  //       }
+  //     }
+  //     deleteBackward(...args)
+  //   }
+  // }
   return editor
 }
