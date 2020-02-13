@@ -16,6 +16,12 @@ export function Element(props: RenderElementProps) {
       return <blockquote {...attributes}>{children}</blockquote>
     case 'bulleted-list':
       return <ul {...attributes}>{children}</ul>
+    case 'link':
+      return (
+        <a {...attributes} href={element.url}>
+          {children}
+        </a>
+      )
     case 'heading-one':
       return <h1 {...attributes}>{children}</h1>
     case 'heading-two':

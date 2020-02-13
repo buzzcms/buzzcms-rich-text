@@ -7,6 +7,7 @@ import { Editable, Slate, useEditor, withReact } from 'slate-react'
 import { jsx } from 'theme-ui'
 
 import { Element } from './Element'
+import { withLinks } from './plugins/withLinks'
 import { withGalleries } from './withGalleries'
 import { withImages } from './withImages'
 import { withShortcuts } from './withShortcuts'
@@ -39,7 +40,9 @@ export default function RichText({
     () =>
       withGalleries(
         withTabs(
-          withImages(withShortcuts(withReact(withHistory(createEditor())))),
+          withLinks(
+            withImages(withShortcuts(withReact(withHistory(createEditor())))),
+          ),
         ),
       ),
     [],
