@@ -1,7 +1,9 @@
 import { Editor, Range, Transforms } from 'slate'
 import { ReactEditor } from 'slate-react'
 
-export const SHORTCUTS: { [key: string]: string } = {
+import { BlockType } from '../types'
+
+export const SHORTCUTS: { [key: string]: BlockType | 'list-item' } = {
   '*': 'list-item',
   '-': 'list-item',
   '+': 'list-item',

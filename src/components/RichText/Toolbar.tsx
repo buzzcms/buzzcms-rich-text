@@ -3,7 +3,7 @@
 import { useEditor } from 'slate-react'
 import { jsx } from 'theme-ui'
 
-import { insertImage, insertImageById } from './withImages'
+import { insertImage, insertImageById } from './plugins/withImages'
 
 export function Toolbar() {
   const editor = useEditor()
