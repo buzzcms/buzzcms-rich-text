@@ -13,7 +13,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -32,6 +33,7 @@
     "@storybook/addon-links": "^5.3.13",
     "@storybook/addons": "^5.3.13",
     "@storybook/react": "^5.3.13",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@types/is-url": "^1.2.28",
     "@types/jest": "^25.1.2",
     "@types/react": "^16.9.19",
@@ -67,6 +69,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@reach/tabs": "^0.8.2"
+    "@reach/tabs": "^0.8.2",
+    "react-player": "^1.15.2"
   }
 }

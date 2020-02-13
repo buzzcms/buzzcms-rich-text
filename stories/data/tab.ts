@@ -73,4 +73,13 @@ export const tab = [
       },
     ],
   },
+  {
+    type: 'youtube-video',
+    id: '6JR8HI9Ymd8',
+    children: [
+      {
+        text: '',
+      },
+    ],
+  },
 ]

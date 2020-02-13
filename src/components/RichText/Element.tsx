@@ -7,6 +7,7 @@ import { jsx } from 'theme-ui'
 
 import { GalleriesElement } from './GalleriesElement'
 import { Tabs } from './TabList'
+import { Video } from './Video'
 
 export function Element(props: RenderElementProps) {
   const { attributes, children, element } = props
@@ -35,6 +36,8 @@ export function Element(props: RenderElementProps) {
       return <Tabs {...props} />
     case 'tab-panel':
       return <TabPanel {...props} />
+    case 'video':
+      return <Video {...props} />
     case 'img':
       return (
         <div {...attributes}>

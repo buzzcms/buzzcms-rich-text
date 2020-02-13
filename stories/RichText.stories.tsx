@@ -6,6 +6,7 @@ import { galleries } from './data/galleries'
 import { image } from './data/image'
 import { list } from './data/list'
 import { tab } from './data/tab'
+import { video } from './data/video'
 import StoryWrapper from './StoryWrapper'
 
 export default {
@@ -52,4 +53,11 @@ export const Tab = () => {
 
 Tab.story = {
   name: 'Tab',
+}
+export const Video = () => {
+  return <Editor initialValue={video} />
+}
+
+Video.story = {
+  name: 'Video',
 }
