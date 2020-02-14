@@ -19,8 +19,31 @@ export const SHORTCUTS: {
   '######': 'heading-six',
 }
 
+function getBlockText(editor: ReactEditor) {
+  const block = Editor.above(editor, {
+    match: n => Editor.isBlock(editor, n),
+  })
+  const path = block ? block[1] : []
+  return Editor.string(editor, path)
+}
+
+const isEnd = (editor: ReactEditor) => {
+  if (!editor.selection) {
+    return false
+  }
+  const { anchor } = editor.selection
+  return Editor.isEnd(editor, anchor, anchor.path)
+}
+
+function getAboveBlockType(editor: ReactEditor) {
+  const tmp = Editor.above(editor, {
+    match: n => Editor.isBlock(editor, n),
+  })
+  return tmp && tmp[0].type
+}
+
 export function withShortcuts(editor: ReactEditor) {
-  const { insertText } = editor
+  const { insertText, insertBreak } = editor
   editor.insertText = text => {
     const { selection } = editor
     if (text === ' ' && selection && Range.isCollapsed(selection)) {
@@ -59,30 +82,29 @@ export function withShortcuts(editor: ReactEditor) {
     insertText(text)
   }
 
-  // editor.deleteBackward = (...args) => {
-  //   const { selection } = editor
-  //   if (selection && Range.isCollapsed(selection)) {
-  //     const match = Editor.above(editor, {
-  //       match: n => Editor.isBlock(editor, n),
-  //     })
-  //     if (match) {
-  //       const [block, path] = match
-  //       const start = Editor.start(editor, path)
-  //       if (
-  //         block.type !== 'paragraph' &&
-  //         Point.equals(selection.anchor, start)
-  //       ) {
-  //         Transforms.setNodes(editor, { type: 'paragraph' })
-  //         if (block.type === 'list-item') {
-  //           Transforms.unwrapNodes(editor, {
-  //             match: n => n.type === 'bulleted-list',
-  //           })
-  //         }
-  //         return
-  //       }
-  //     }
-  //     deleteBackward(...args)
-  //   }
-  // }
+  editor.insertBreak = () => {
+    if (!isEnd(editor)) {
+      insertBreak()
+    } else {
+      const type = getAboveBlockType(editor)
+      if (type === 'list-item') {
+        const text = getBlockText(editor)
+        if (text !== '') {
+          insertBreak()
+          return
+        }
+        Transforms.setNodes(editor, {
+          type: 'paragraph',
+          children: [{ text: '' }],
+        })
+        Transforms.liftNodes(editor)
+        return
+      }
+      Transforms.insertNodes(editor, {
+        type: 'paragraph',
+        children: [{ text: '' }],
+      })
+    }
+  }
   return editor
 }
