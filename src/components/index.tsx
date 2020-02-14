@@ -107,6 +107,22 @@ export default function RichText({
             p: 1,
             borderBottom: '2px solid gray',
           },
+          '[data-reach-accordion-item]': {
+            mb: 2,
+          },
+          '[data-reach-accordion-panel]': {
+            border: '1px solid gray',
+            p: 2,
+          },
+          '[data-reach-accordion-button]': {
+            width: '100%',
+            bg: 'primary',
+            color: 'white',
+            p: 2,
+            fontSize: 'f5',
+            textAlign: 'left',
+            border: 'none',
+          },
         }}
       >
         <HoverableToolbar />

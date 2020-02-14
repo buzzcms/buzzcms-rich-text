@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Node } from 'slate'
 
 import RichText from '../src/components'
+import { accordion } from './data/accordion'
 import { full } from './data/full'
 import { galleries } from './data/galleries'
 import { image } from './data/image'
@@ -58,4 +59,8 @@ export const Single = () => {
 }
 export const Shortcodes = () => {
   return <Editor initialValue={shortcodes} />
+}
+
+export const Accordion = () => {
+  return <Editor initialValue={accordion} />
 }

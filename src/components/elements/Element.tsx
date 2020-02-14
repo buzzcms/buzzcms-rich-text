@@ -1,6 +1,13 @@
 /** @jsx jsx */
 import '@reach/tabs/styles.css'
+import '@reach/accordion/styles.css'
 
+import {
+  Accordion,
+  AccordionButton,
+  AccordionItem,
+  AccordionPanel,
+} from '@reach/accordion'
 import { TabPanel } from '@reach/tabs'
 import { RenderElementProps } from 'slate-react'
 import { jsx } from 'theme-ui'
@@ -35,6 +42,21 @@ export function Element(props: RenderElementProps) {
         <table>
           <tbody {...attributes}>{children}</tbody>
         </table>
+      )
+    case 'accordion':
+      return (
+        <Accordion collapsible multiple {...attributes}>
+          {children}
+        </Accordion>
+      )
+    case 'accordion-item':
+      return (
+        <AccordionItem {...attributes}>
+          <AccordionButton>
+            <span contentEditable={false}>{element.title}</span>
+          </AccordionButton>
+          <AccordionPanel>{children}</AccordionPanel>
+        </AccordionItem>
       )
     case 'table-row':
       return <tr {...attributes}>{children}</tr>

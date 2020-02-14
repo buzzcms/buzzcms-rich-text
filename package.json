@@ -69,6 +69,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "@reach/accordion": "^0.8.2",
     "@reach/tabs": "^0.8.2",
     "is-hotkey": "^0.1.6",
     "react-icons": "^3.9.0",
