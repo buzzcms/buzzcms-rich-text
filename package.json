@@ -34,6 +34,7 @@
     "@storybook/addons": "^5.3.13",
     "@storybook/react": "^5.3.13",
     "@storybook/storybook-deployer": "^2.8.1",
+    "@types/compose-function": "^0.0.30",
     "@types/is-url": "^1.2.28",
     "@types/jest": "^25.1.2",
     "@types/react": "^16.9.19",
@@ -71,7 +72,9 @@
   "dependencies": {
     "@reach/accordion": "^0.8.2",
     "@reach/tabs": "^0.8.2",
+    "compose-function": "^3.0.3",
     "is-hotkey": "^0.1.6",
+    "is-image": "^3.0.0",
     "react-icons": "^3.9.0",
     "react-player": "^1.15.2",
     "react-spring": "^8.0.27",

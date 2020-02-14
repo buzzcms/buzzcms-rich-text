@@ -1911,6 +1911,11 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/compose-function@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@types/compose-function/-/compose-function-0.0.30.tgz#1fbe97dda4caeb7f5e45a553dee8d46d91e48c5b"
+  integrity sha1-H76X3aTK639eRaVT3ujUbZHkjFs=
+
 "@types/debounce@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@types/debounce/-/debounce-1.2.0.tgz#9ee99259f41018c640b3929e1bb32c3dcecdb192"
@@ -2576,6 +2581,11 @@ aria-query@^3.0.0:
   dependencies:
     ast-types-flow "0.0.7"
     commander "^2.11.0"
+
+arity-n@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/arity-n/-/arity-n-1.0.4.tgz#d9e76b11733e08569c0847ae7b39b2860b30b745"
+  integrity sha1-2edrEXM+CFacCEeuezmyhgswt0U=
 
 arr-diff@^4.0.0:
   version "4.0.0"
@@ -3941,6 +3951,13 @@ component-emitter@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
+
+compose-function@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/compose-function/-/compose-function-3.0.3.tgz#9ed675f13cc54501d30950a486ff6a7ba3ab185f"
+  integrity sha1-ntZ18TzFRQHTCVCkhv9qe6OrGF8=
+  dependencies:
+    arity-n "^1.0.4"
 
 compute-scroll-into-view@^1.0.13:
   version "1.0.13"
@@ -6672,6 +6689,13 @@ is-hotkey@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/is-hotkey/-/is-hotkey-0.1.6.tgz#c214b1ccdcbda46fba4ba93d2de64915db737471"
   integrity sha512-1+hMr0GLPM0M49UDRt9RgE8i+SM29UY4AGRP6sGz6fThOVXqSrEvTMakolhHMcVizJnPNAoMpEmE+Oi1k2NrZQ==
+
+is-image@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/is-image/-/is-image-3.0.0.tgz#f183431372f6f8caf7cda316a0a6dea4d41926dd"
+  integrity sha512-NNPLvwKZ/hqx1Wv+ayKvVeDOylIapVKSxK/guzmB9doAk0FEdK0KqFKbnwNbuMLEPqEY4NaBhxzB4e98fVOq2Q==
+  dependencies:
+    image-extensions "^1.1.0"
 
 is-map@^2.0.1:
   version "2.0.1"
