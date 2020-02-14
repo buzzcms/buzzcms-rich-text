@@ -18,6 +18,7 @@ export default function StoryWrapper({ children }: { children: ReactNode }) {
             fontFamily: 'Open Sans',
             margin: 0,
             padding: 0,
+            color: '#231f20',
           },
           ul: {
             margin: 0,

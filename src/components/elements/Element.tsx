@@ -50,13 +50,11 @@ export function Element(props: RenderElementProps) {
       return (
         <div {...attributes}>
           <div contentEditable={false}>
-            <div sx={{ width: '100%', pb: '75%', position: 'relative' }}>
+            <div sx={{ width: '100%' }}>
               <img
                 src={element.src}
                 sx={{
-                  position: 'absolute',
                   width: '100%',
-                  height: '100%',
                 }}
               />
             </div>

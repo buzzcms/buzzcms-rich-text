@@ -25,7 +25,13 @@ export function GalleriesElement({
         {items.map((x, idx) => (
           <div key={idx} sx={{ width: ['50%', '33.33%', '25%'], p: 2 }}>
             <div>
-              <div sx={{ width: '100%', pb: '75%', position: 'relative' }}>
+              <div
+                sx={{
+                  width: '100%',
+                  pb: '75%',
+                  position: 'relative',
+                }}
+              >
                 <img
                   src={x.src}
                   sx={{

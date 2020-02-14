@@ -9,4 +9,4 @@ export type BlockType =
   | 'heading-five'
   | 'heading-six'
 
-export type MarkType = 'bold' | 'italic' | 'underline' | 'code'
+export type MarkType = 'bold' | 'italic' | 'underline' | 'code' | 'strike'

@@ -2,6 +2,14 @@
 
 import { ReactNode, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
+import {
+  MdFormatBold,
+  MdFormatItalic,
+  MdFormatUnderlined,
+  MdLooks3,
+  MdLooksTwo,
+  MdStrikethroughS,
+} from 'react-icons/md'
 import { Editor, Range } from 'slate'
 import { ReactEditor, useSlate } from 'slate-react'
 import { jsx } from 'theme-ui'
@@ -59,11 +67,24 @@ export function HoverableToolbar() {
           mt: -2,
         }}
       >
-        <BlockButton format="heading-two">H2</BlockButton>
-        <BlockButton format="heading-three">H3</BlockButton>
-        <MarkButton format="bold">B</MarkButton>
-        <MarkButton format="italic">I</MarkButton>
-        <MarkButton format="underline">U</MarkButton>
+        <BlockButton format="heading-two">
+          <MdLooksTwo />
+        </BlockButton>
+        <BlockButton format="heading-three">
+          <MdLooks3 />
+        </BlockButton>
+        <MarkButton format="bold">
+          <MdFormatBold />
+        </MarkButton>
+        <MarkButton format="italic">
+          <MdFormatItalic />
+        </MarkButton>
+        <MarkButton format="underline">
+          <MdFormatUnderlined />
+        </MarkButton>
+        <MarkButton format="strike">
+          <MdStrikethroughS />
+        </MarkButton>
       </div>
     </Portal>
   )

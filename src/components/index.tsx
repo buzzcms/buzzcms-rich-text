@@ -62,21 +62,44 @@ export default function RichText({
       <div
         sx={{
           bg: 'white',
-          p: 3,
-          maxWidth: 960,
+          p: 4,
+          maxWidth: 768,
           mx: 'auto',
           ul: {
             listStyle: 'disc',
             margin: '0 0 1.5em 3em',
           },
-          blockquote: {
-            bg: 'yellow',
-            mx: 0,
-            p: 3,
-          },
           '[data-reach-tab-panel]': {
             p: 3,
-            bg: '#efefef',
+            bg: '#f7f7f7',
+          },
+          '[data-reach-tab]': {
+            p: 3,
+            textTransform: 'uppercase',
+            fontSize: 's',
+          },
+          '[data-reach-tab-list]': { bg: '#fcfcfc' },
+          '[data-reach-tab][data-selected]': {
+            borderTop: '4px solid #231f20',
+            borderBottom: 'none',
+            bg: '#f7f7f7',
+          },
+          blockquote: {
+            bg: '#f7f7f7',
+            mx: 0,
+            p: 4,
+            borderLeft: '4px solid #231f20',
+          },
+          h2: {
+            fontSize: '2rem',
+            lineHeight: '2.35rem',
+            marginTop: '2.5rem',
+          },
+          h3: {
+            fontSize: '1.5rem',
+            lineHeight: '',
+            marginTop: '2.1875rem',
+            marginBottom: '1.25rem',
           },
         }}
       >

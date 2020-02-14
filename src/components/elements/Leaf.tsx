@@ -16,5 +16,8 @@ export function Leaf({ attributes, children, leaf }: RenderLeafProps) {
   if (leaf.underline) {
     children = <u>{children}</u>
   }
+  if (leaf.strike) {
+    children = <s>{children}</s>
+  }
   return <span {...attributes}>{children}</span>
 }
