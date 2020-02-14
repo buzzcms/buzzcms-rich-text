@@ -65,6 +65,10 @@ export const full = [
     children: [{ text: "up to Heading 5, if you'd like to." }],
   },
   {
+    type: 'pre',
+    children: [{ text: 'Preformatted text' }],
+  },
+  {
     type: 'paragraph',
     children: [
       { text: '' },

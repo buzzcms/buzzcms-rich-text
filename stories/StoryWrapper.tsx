@@ -47,6 +47,9 @@ export default function StoryWrapper({ children }: { children: ReactNode }) {
             lineHeight: '1.5rem',
             marginBottom: '1.5rem',
           },
+          pre: {
+            fontFamily: 'monospace',
+          },
         }}
       />
       {children}

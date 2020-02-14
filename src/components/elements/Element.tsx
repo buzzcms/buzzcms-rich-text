@@ -18,6 +18,8 @@ export function Element(props: RenderElementProps) {
       return <mark {...attributes}>{children}</mark>
     case 'hr':
       return <hr {...attributes} />
+    case 'pre':
+      return <pre {...attributes}>{children}</pre>
     case 'bulleted-list':
       return <ul {...attributes}>{children}</ul>
     case 'numbered-list':

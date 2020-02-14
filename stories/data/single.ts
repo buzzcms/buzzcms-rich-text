@@ -28,22 +28,22 @@ export const single = [
     items: [
       {
         id: 1,
-        caption: 'Laptop 01',
+        caption: 'Image 01',
         src: 'https://source.unsplash.com/400x225/?laptop,work',
       },
       {
         id: 2,
-        caption: 'Laptop 02',
+        caption: 'Image 02',
         src: 'https://source.unsplash.com/400x225/?pc',
       },
       {
         id: 3,
-        caption: 'Laptop 03',
+        caption: 'Image 03',
         src: 'https://source.unsplash.com/400x225/?laptop',
       },
       {
         id: 4,
-        caption: 'Laptop 04',
+        caption: 'Image 04',
         src: 'https://source.unsplash.com/400x225/?work',
       },
     ],
