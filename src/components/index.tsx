@@ -99,6 +99,14 @@ export default function RichText({
             marginTop: '1.5rem',
             marginBottom: '1.5rem',
           },
+          table: {
+            borderSpacing: 0,
+            width: '100%',
+          },
+          td: {
+            p: 1,
+            borderBottom: '2px solid gray',
+          },
         }}
       >
         <HoverableToolbar />

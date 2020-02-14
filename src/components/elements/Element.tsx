@@ -28,6 +28,16 @@ export function Element(props: RenderElementProps) {
           {children}
         </a>
       )
+    case 'table':
+      return (
+        <table>
+          <tbody {...attributes}>{children}</tbody>
+        </table>
+      )
+    case 'table-row':
+      return <tr {...attributes}>{children}</tr>
+    case 'table-cell':
+      return <td {...attributes}>{children}</td>
     case 'heading-one':
       return <h1 {...attributes}>{children}</h1>
     case 'heading-two':

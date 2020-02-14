@@ -22,6 +22,9 @@ export function MarkButton({
       sx={{
         p: 2,
         mx: 1,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         color: isMarkActive(editor, format) ? 'white' : 'gray',
       }}
       onMouseDown={event => {

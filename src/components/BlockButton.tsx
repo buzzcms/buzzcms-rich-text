@@ -22,6 +22,9 @@ export function BlockButton({
       sx={{
         p: 2,
         mx: 1,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         color: isBlockActive(editor, format) ? 'white' : 'gray',
       }}
       onMouseDown={event => {

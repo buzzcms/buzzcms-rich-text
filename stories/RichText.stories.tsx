@@ -7,6 +7,7 @@ import { galleries } from './data/galleries'
 import { image } from './data/image'
 import { list } from './data/list'
 import { tab } from './data/tab'
+import { table } from './data/table'
 import { video } from './data/video'
 import StoryWrapper from './StoryWrapper'
 
@@ -38,6 +39,9 @@ export const Image = () => {
 
 export const Tab = () => {
   return <Editor initialValue={tab} />
+}
+export const Table = () => {
+  return <Editor initialValue={table} />
 }
 
 export const Video = () => {
