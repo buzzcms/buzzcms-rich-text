@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import { useSlate } from 'slate-react'
 import { jsx } from 'theme-ui'
 
+import { IconButton } from './IconButton'
 import { BlockType } from './types'
 import { isBlockActive, toggleBlock } from './utils'
 
@@ -18,21 +19,14 @@ export function BlockButton({
 }) {
   const editor = useSlate()
   return (
-    <span
-      sx={{
-        p: 2,
-        mx: 1,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: isBlockActive(editor, format) ? 'white' : 'gray',
-      }}
+    <IconButton
+      active={isBlockActive(editor, format)}
       onMouseDown={event => {
         event.preventDefault()
         toggleBlock(editor, format)
       }}
     >
       {children || icon}
-    </span>
+    </IconButton>
   )
 }

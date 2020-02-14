@@ -58,13 +58,17 @@ export function HoverableToolbar() {
         ref={ref}
         sx={{
           position: 'absolute',
-          p: 2,
+          p: 1,
           top: -10000,
           left: -10000,
           opacity: 0,
           transition: 'opacity 0.75s',
           bg: '#222',
           mt: -2,
+          svg: {
+            width: 18,
+            height: 18,
+          },
         }}
       >
         <BlockButton format="heading-two">

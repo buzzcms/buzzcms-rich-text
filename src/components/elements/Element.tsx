@@ -14,6 +14,7 @@ import { jsx } from 'theme-ui'
 
 import { Video } from '../Video'
 import { GalleriesElement } from './GalleriesElement'
+import { TableElement } from './TableElement'
 import { TabsElement } from './TabsElement'
 
 export function Element(props: RenderElementProps) {
@@ -38,11 +39,7 @@ export function Element(props: RenderElementProps) {
         </a>
       )
     case 'table':
-      return (
-        <table>
-          <tbody {...attributes}>{children}</tbody>
-        </table>
-      )
+      return <TableElement {...props} />
     case 'accordion':
       return (
         <Accordion collapsible multiple {...attributes}>
