@@ -14,6 +14,10 @@ export function Element(props: RenderElementProps) {
   switch (element.type) {
     case 'block-quote':
       return <blockquote {...attributes}>{children}</blockquote>
+    case 'mark':
+      return <mark {...attributes}>{children}</mark>
+    case 'hr':
+      return <hr {...attributes} />
     case 'bulleted-list':
       return <ul {...attributes}>{children}</ul>
     case 'numbered-list':

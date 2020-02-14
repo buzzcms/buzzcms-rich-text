@@ -43,7 +43,7 @@ export function Toolbar() {
         <BlockButton format="heading-two">
           <span sx={{ fontWeight: 'bold', fontSize: 13 }}>H2</span>
         </BlockButton>
-        <BlockButton format="heading-two">
+        <BlockButton format="heading-three">
           <span sx={{ fontWeight: 'bold', fontSize: 10 }}>H3</span>
         </BlockButton>
         <MarkButton format="bold">

@@ -69,6 +69,7 @@ export default function RichText({
             listStyle: 'disc',
             margin: '0 0 1.5em 3em',
           },
+          '[data-reach-tabs]': { my: 3 },
           '[data-reach-tab-panel]': {
             p: 3,
             bg: '#f7f7f7',
@@ -90,16 +91,13 @@ export default function RichText({
             p: 4,
             borderLeft: '4px solid #231f20',
           },
-          h2: {
-            fontSize: '2rem',
-            lineHeight: '2.35rem',
-            marginTop: '2.5rem',
+          mark: {
+            bg: '#FFF7A8',
           },
-          h3: {
-            fontSize: '1.5rem',
-            lineHeight: '',
-            marginTop: '2.1875rem',
-            marginBottom: '1.25rem',
+          hr: {
+            borderTop: '3px dotted #e6e6e6',
+            marginTop: '1.5rem',
+            marginBottom: '1.5rem',
           },
         }}
       >

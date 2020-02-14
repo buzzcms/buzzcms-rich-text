@@ -25,6 +25,28 @@ export default function StoryWrapper({ children }: { children: ReactNode }) {
             padding: 0,
             listStyle: 'none',
           },
+          h2: {
+            fontSize: '2rem',
+            lineHeight: '2.35rem',
+            marginTop: '2.5rem',
+          },
+          h3: {
+            fontSize: '1.5rem',
+            lineHeight: '',
+            marginTop: '2.1875rem',
+            marginBottom: '1.25rem',
+          },
+          h4: {
+            fontSize: '1rem',
+            lineHeight: '',
+            marginTop: '1.5rem',
+            marginBottom: '1.5rem',
+          },
+          p: {
+            fontSize: '1rem',
+            lineHeight: '1.5rem',
+            marginBottom: '1.5rem',
+          },
         }}
       />
       {children}
