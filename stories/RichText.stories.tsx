@@ -6,6 +6,7 @@ import { full } from './data/full'
 import { galleries } from './data/galleries'
 import { image } from './data/image'
 import { list } from './data/list'
+import { single } from './data/single'
 import { tab } from './data/tab'
 import { table } from './data/table'
 import { video } from './data/video'
@@ -50,4 +51,7 @@ export const Video = () => {
 
 export const Full = () => {
   return <Editor initialValue={full} />
+}
+export const Single = () => {
+  return <Editor initialValue={single} />
 }
