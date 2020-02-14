@@ -3,10 +3,13 @@ import { ReactEditor } from 'slate-react'
 
 import { BlockType } from '../types'
 
-export const SHORTCUTS: { [key: string]: BlockType | 'list-item' } = {
+export const SHORTCUTS: {
+  [key: string]: BlockType
+} = {
   '*': 'list-item',
   '-': 'list-item',
   '+': 'list-item',
+  '1.': 'numbered-list-item',
   '>': 'block-quote',
   '#': 'heading-one',
   '##': 'heading-two',
@@ -35,11 +38,17 @@ export function withShortcuts(editor: ReactEditor) {
         Transforms.delete(editor)
         Transforms.setNodes(
           editor,
-          { type },
+          { type: type === 'numbered-list-item' ? 'list-item' : type },
           { match: n => Editor.isBlock(editor, n) },
         )
         if (type === 'list-item') {
           const list = { type: 'bulleted-list', children: [] }
+          Transforms.wrapNodes(editor, list, {
+            match: n => n.type === 'list-item',
+          })
+        }
+        if (type === 'numbered-list-item') {
+          const list = { type: 'numbered-list', children: [] }
           Transforms.wrapNodes(editor, list, {
             match: n => n.type === 'list-item',
           })

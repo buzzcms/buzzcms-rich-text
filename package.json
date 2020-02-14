@@ -74,6 +74,7 @@
     "is-hotkey": "^0.1.6",
     "react-icons": "^3.9.0",
     "react-player": "^1.15.2",
+    "react-spring": "^8.0.27",
     "slate-hyperscript": "^0.57.1"
   }
 }

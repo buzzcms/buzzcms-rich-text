@@ -8,5 +8,7 @@ export type BlockType =
   | 'heading-four'
   | 'heading-five'
   | 'heading-six'
+  | 'list-item'
+  | 'numbered-list-item'
 
 export type MarkType = 'bold' | 'italic' | 'underline' | 'code' | 'strike'

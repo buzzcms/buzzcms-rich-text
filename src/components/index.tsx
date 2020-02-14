@@ -69,6 +69,10 @@ export default function RichText({
             listStyle: 'disc',
             margin: '0 0 1.5em 3em',
           },
+          ol: {
+            margin: '0 0 1.5em 3em',
+            p: 0,
+          },
           '[data-reach-tabs]': { my: 3 },
           '[data-reach-tab-panel]': {
             p: 3,
