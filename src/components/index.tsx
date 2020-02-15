@@ -1,15 +1,18 @@
 /** @jsx jsx */
 
 import isHotkey from 'is-hotkey'
-import { useCallback, useMemo } from 'react'
-import { createEditor, Node } from 'slate'
+import { useCallback, useMemo, useState } from 'react'
+import { createEditor, Node, Range } from 'slate'
 import { Editable, Slate } from 'slate-react'
 import { jsx } from 'theme-ui'
 
+import { EditorInfo } from './EditorInfo'
 import { Element } from './elements/Element'
 import { Leaf } from './elements/Leaf'
+import { execTabInTable } from './elements/TableElement'
 import { HoverableToolbar } from './HoverableToolbar'
 import { withEditor } from './plugins'
+import { style } from './style'
 import { Toolbar } from './Toolbar'
 import { toggleMark } from './utils'
 
@@ -29,98 +32,37 @@ export default function RichText({
 }) {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
-
   const editor = useMemo(() => withEditor(createEditor()), [])
+  const [selection, setSelection] = useState<Range | null>(null)
 
   return (
     <Slate
       editor={editor}
       value={value}
+      selection={selection}
       onChange={v => {
         onChange(v)
+        setSelection(editor.selection)
       }}
     >
-      <div
-        sx={{
-          bg: 'white',
-          p: 4,
-          maxWidth: 768,
-          mx: 'auto',
-          ul: {
-            listStyle: 'disc',
-            margin: '0 0 1.5em 3em',
-          },
-          ol: {
-            margin: '0 0 1.5em 3em',
-            p: 0,
-          },
-          '[data-reach-tabs]': { my: 3 },
-          '[data-reach-tab-panel]': {
-            p: 3,
-            bg: '#f7f7f7',
-          },
-          '[data-reach-tab]': {
-            p: 3,
-            textTransform: 'uppercase',
-            fontSize: 's',
-          },
-          '[data-reach-tab-list]': { bg: '#fcfcfc' },
-          '[data-reach-tab][data-selected]': {
-            borderTop: '4px solid #231f20',
-            borderBottom: 'none',
-            bg: '#f7f7f7',
-          },
-          blockquote: {
-            bg: '#f7f7f7',
-            mx: 0,
-            p: 4,
-            borderLeft: '4px solid #231f20',
-          },
-          mark: {
-            bg: '#FFF7A8',
-          },
-          hr: {
-            borderTop: '3px dotted #e6e6e6',
-            marginTop: '1.5rem',
-            marginBottom: '1.5rem',
-          },
-          table: {
-            borderSpacing: 0,
-            width: '100%',
-          },
-          td: {
-            p: 1,
-            borderBottom: '2px solid gray',
-          },
-          '[data-reach-accordion-item]': {
-            mb: 2,
-          },
-          '[data-reach-accordion-panel]': {
-            border: '1px solid gray',
-            p: 2,
-          },
-          '[data-reach-accordion-button]': {
-            width: '100%',
-            bg: 'primary',
-            color: 'white',
-            p: 2,
-            fontSize: 'f5',
-            textAlign: 'left',
-            border: 'none',
-          },
-        }}
-      >
+      <div sx={style}>
         <HoverableToolbar />
         <Toolbar />
+        <EditorInfo selection={selection} />
         <Editable
           renderElement={renderElement}
           renderLeaf={renderLeaf}
           placeholder="Write some markdown..."
           spellCheck
           autoFocus
-          onKeyDown={(event: any) => {
+          onKeyDown={event => {
+            console.log(event.key)
+            if (event.key === 'Tab') {
+              event.preventDefault()
+              execTabInTable(editor)
+            }
             for (const hotkey in HOTKEYS) {
-              if (isHotkey(hotkey, event)) {
+              if (isHotkey(hotkey, event as any)) {
                 event.preventDefault()
                 const mark = HOTKEYS[hotkey]
                 toggleMark(editor, mark)

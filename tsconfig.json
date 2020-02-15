@@ -25,7 +25,6 @@
       "@": ["./"],
       "*": ["src/*", "node_modules/*"]
     },
-    "outDir": "/.dist",
     "downlevelIteration": true,
     "jsx": "react",
     "esModuleInterop": true
