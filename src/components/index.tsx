@@ -9,7 +9,7 @@ import { jsx } from 'theme-ui'
 import { EditorInfo } from './EditorInfo'
 import { Element } from './elements/Element'
 import { Leaf } from './elements/Leaf'
-import { execTabInTable } from './elements/TableElement'
+import { execTabInTable, isInTableCell } from './elements/TableElement'
 import { HoverableToolbar } from './HoverableToolbar'
 import { withEditor } from './plugins'
 import { style } from './style'
@@ -56,10 +56,11 @@ export default function RichText({
           spellCheck
           autoFocus
           onKeyDown={event => {
-            console.log(event.key)
-            if (event.key === 'Tab') {
-              event.preventDefault()
-              execTabInTable(editor)
+            if (isInTableCell(editor)) {
+              if (event.key === 'Tab') {
+                event.preventDefault()
+                execTabInTable(editor)
+              }
             }
             for (const hotkey in HOTKEYS) {
               if (isHotkey(hotkey, event as any)) {

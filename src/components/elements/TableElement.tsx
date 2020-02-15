@@ -70,10 +70,8 @@ function getTableCellPath(editor: Editor) {
   return path
 }
 
-function isInTableCell(editor: Editor) {
-  return Editor.above(editor, {
-    match: x => x.type === 'table-cell',
-  })
+export function isInTableCell(editor: Editor) {
+  return !!getTableCell(editor)
 }
 
 export function isInRowLastCell(editor: Editor) {
@@ -103,12 +101,19 @@ function getNextNodePath(path: Path) {
 
 export function execTabInTable(editor: Editor) {
   const cell = getTableCell(editor)
-  console.log(cell)
   if (!cell) {
     return
   }
   const [, path] = cell
-  if (isInRowLastCell(editor)) {
+  if (isInTableLastCell(editor)) {
+    const table = getTable(editor)
+    if (!table) {
+      return
+    }
+    const [, tablePath] = table
+    const nextPath = getNextNodePath(tablePath)
+    Transforms.select(editor, nextPath)
+  } else if (isInRowLastCell(editor)) {
     const row = getRow(editor)
     if (!row) {
       return
@@ -116,10 +121,11 @@ export function execTabInTable(editor: Editor) {
     const [, rowPath] = row
     const nextPath = getNextNodePath(rowPath)
     Transforms.select(editor, [...nextPath, 0])
-    return
+  } else {
+    const nextPath = getNextNodePath(path)
+    Transforms.select(editor, nextPath)
   }
-  const nextPath = getNextNodePath(path)
-  Transforms.select(editor, nextPath)
+  Transforms.collapse(editor, { edge: 'start' })
 }
 
 export function TableElement({ attributes, children }: RenderElementProps) {
@@ -147,21 +153,6 @@ export function TableElement({ attributes, children }: RenderElementProps) {
               <div ref={ref} style={style} data-placement={placement}>
                 <button
                   onClick={() => {
-                    console.log(isInTableCell(editor))
-                    console.log(getTableCell(editor))
-                    console.log(getTableSize(editor))
-                    console.log(getTableCellPath(editor))
-                    console.log('is last cell in row', isInRowLastCell(editor))
-                    console.log(
-                      'is last cell in table',
-                      isInTableLastCell(editor),
-                    )
-                  }}
-                >
-                  Check
-                </button>
-                <button
-                  onClick={() => {
                     addRow(editor)
                   }}
                 >
@@ -173,34 +164,6 @@ export function TableElement({ attributes, children }: RenderElementProps) {
                   }}
                 >
                   Append row
-                </button>
-                <button
-                  onClick={() => {
-                    const tmp = Editor.above(editor, {
-                      match: x => x.type === 'table-row',
-                    })
-                    if (!tmp) {
-                      return
-                    }
-                    const [node, path] = tmp
-                    console.log({ node, path })
-                  }}
-                >
-                  Print row
-                </button>
-                <button
-                  onClick={() => {
-                    const tmp = Editor.above(editor, {
-                      match: x => x.type === 'table',
-                    })
-                    if (!tmp) {
-                      return
-                    }
-                    const [node, path] = tmp
-                    console.log({ node, path })
-                  }}
-                >
-                  Print table
                 </button>
                 <div ref={arrowProps.ref} style={arrowProps.style} />
               </div>

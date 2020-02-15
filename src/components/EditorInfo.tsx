@@ -23,7 +23,6 @@ export function EditorInfo({ selection }: { selection: Range | null }) {
       return
     }
     const [node, path] = tmp
-    console.log(node.type || 'paragraph')
     setInfo({ node, path })
   }, [selection])
 
