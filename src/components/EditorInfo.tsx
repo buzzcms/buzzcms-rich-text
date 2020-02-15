@@ -5,7 +5,7 @@ import { Editor, Range } from 'slate'
 import { useEditor } from 'slate-react'
 import { jsx } from 'theme-ui'
 
-function getCurrentElement(editor: Editor) {
+export function getCurrentElement(editor: Editor) {
   const { selection } = editor
   if (!selection) {
     return null

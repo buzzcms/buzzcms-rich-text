@@ -40,6 +40,22 @@ export function Element(props: RenderElementProps) {
       )
     case 'table':
       return <TableElement {...props} />
+    case 'flex':
+      return (
+        <div
+          sx={{ mb: 2, p: 2, ...element.style, display: 'flex' }}
+          {...props}
+        />
+      )
+    case 'grid':
+      return (
+        <div
+          sx={{ mb: 2, p: 2, ...element.style, display: 'grid' }}
+          {...props}
+        />
+      )
+    case 'container':
+      return <div sx={{ p: 2, ...element.style }} id={element.id} {...props} />
     case 'accordion':
       return (
         <Accordion collapsible multiple {...attributes}>

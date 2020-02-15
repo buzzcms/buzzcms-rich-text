@@ -71,7 +71,10 @@
   },
   "dependencies": {
     "@reach/accordion": "^0.8.2",
+    "@reach/dialog": "^0.8.4",
     "@reach/tabs": "^0.8.2",
+    "@types/clone-deep": "^4.0.1",
+    "clone-deep": "^4.0.1",
     "compose-function": "^3.0.3",
     "is-hotkey": "^0.1.6",
     "is-image": "^3.0.0",

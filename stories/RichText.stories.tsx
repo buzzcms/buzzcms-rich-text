@@ -2,16 +2,18 @@ import React, { useState } from 'react'
 import { Node } from 'slate'
 
 import RichText from '../src/components'
-import { accordion } from './data/accordion'
-import { full } from './data/full'
-import { galleries } from './data/galleries'
-import { image } from './data/image'
-import { list } from './data/list'
-import { shortcodes } from './data/shortcodes'
-import { single } from './data/single'
-import { tab } from './data/tab'
-import { table } from './data/table'
-import { video } from './data/video'
+import { accordion } from '../src/data/accordion'
+import { flex } from '../src/data/flex'
+import { full } from '../src/data/full'
+import { galleries } from '../src/data/galleries'
+import { grid } from '../src/data/grid'
+import { image } from '../src/data/image'
+import { list } from '../src/data/list'
+import { shortcodes } from '../src/data/shortcodes'
+import { single } from '../src/data/single'
+import { tab } from '../src/data/tab'
+import { table } from '../src/data/table'
+import { video } from '../src/data/video'
 import StoryWrapper from './StoryWrapper'
 
 export default {
@@ -63,4 +65,12 @@ export const Shortcodes = () => {
 
 export const Accordion = () => {
   return <Editor initialValue={accordion} />
+}
+
+export const Flex = () => {
+  return <Editor initialValue={flex} />
+}
+
+export const Grid = () => {
+  return <Editor initialValue={grid} />
 }

@@ -1,7 +1,13 @@
 const src = 'https://source.unsplash.com/1600x900/?nature,water'
 
 export const tab = [
-  { type: 'heading-one', children: [{ text: 'Tab example' }] },
+  {
+    children: [
+      {
+        text: '',
+      },
+    ],
+  },
   {
     type: 'tabs',
     items: [
@@ -17,7 +23,7 @@ export const tab = [
             type: 'paragraph',
             children: [
               {
-                text: 'This is end of the tab',
+                text: '',
               },
             ],
           },
