@@ -22,9 +22,31 @@ export default {
 
 function Editor({ initialValue }: { initialValue: Node[] }) {
   const [value, setValue] = useState<Node[]>(initialValue)
+  const [isShowInsertDialog, setIsShowInsertDialog] = useState(false)
   return (
     <StoryWrapper>
-      <button onClick={() => console.log(JSON.stringify(value))}>Print</button>
+      <button
+        onClick={() => console.log(JSON.stringify(value))}
+        sx={{ display: 'block', width: '100%' }}
+      >
+        Print
+      </button>
+      <button
+        onClick={() => setIsShowInsertDialog(true)}
+        sx={{
+          cursor: 'pointer',
+          px: 3,
+          py: 2,
+          fontSize: 14,
+          color: 'primary',
+          border: '1 solid',
+          borderColor: 'primary',
+          display: 'block',
+          width: '100%',
+        }}
+      >
+        Insert block
+      </button>
       <RichText value={value} onChange={setValue} />
     </StoryWrapper>
   )

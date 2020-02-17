@@ -1,7 +1,7 @@
 const src = 'https://source.unsplash.com/1600x900/?nature,water'
 
 export const flex = [
-  { type: 'heading-one', children: [{ text: 'Flex example' }] },
+  // { type: 'paragraph', children: [{ text: 'Flex example' }] },
   {
     type: 'flex',
     style: {

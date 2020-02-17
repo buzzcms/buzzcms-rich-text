@@ -65,8 +65,31 @@ export default function RichText({
         <Toolbar />
         <div>
           <EditorInfo selection={selection} />
-          <button onClick={() => setIsShowInsertDialog(true)}>Insert</button>
           <button
+            onClick={() => setIsShowInsertDialog(true)}
+            sx={{
+              cursor: 'pointer',
+              px: 3,
+              py: 2,
+              fontSize: 14,
+              color: 'primary',
+              border: '1 solid',
+              borderColor: 'primary',
+            }}
+          >
+            Insert block
+          </button>
+          <button
+            sx={{
+              cursor: 'pointer',
+              px: 3,
+              py: 2,
+              fontSize: 14,
+              color: 'firebrick',
+              border: '1px solid',
+              borderColor: 'firebrick',
+              ml: 2,
+            }}
             onClick={() => {
               console.log(selection?.anchor)
               const ele = Editor.above(editor, {

@@ -13,8 +13,15 @@ const theme: Partial<CustomTheme> = {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#2B6CB0',
-    secondary: '#609',
+    primary: '#0f4c81',
+    pLight: '##4c77b1',
+    pDark: '#002554',
+    secondary: '#99f3cf',
+    sLight: '#ccffff',
+    sDark: '#67c09e',
+    nearWhite: '#F5F5F6',
+    gray: '#E0E2E0',
+    error: '#b00020',
     modes: {
       dark: {
         text: '#fff',
@@ -38,10 +45,10 @@ const theme: Partial<CustomTheme> = {
     none: 'none',
   },
   fontSizes: {
-    f4: '1.5rem',
-    f5: '1.25rem',
-    f6: '1rem',
-    f7: '0.825rem',
+    xl: '1.5rem',
+    l: '1.25rem',
+    m: '1rem',
+    s: '0.825rem',
   },
   buttons: {},
   iconItemLists: {

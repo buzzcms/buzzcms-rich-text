@@ -27,11 +27,13 @@ export default function StoryWrapper({ children }: { children: ReactNode }) {
           },
           h2: {
             fontSize: '2rem',
+            fontWeight: 400,
             lineHeight: '2.35rem',
             marginTop: '2.5rem',
           },
           h3: {
             fontSize: '1.5rem',
+            fontWeight: 800,
             lineHeight: '',
             marginTop: '2.1875rem',
             marginBottom: '1.25rem',
