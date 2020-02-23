@@ -1,4 +1,5 @@
 {
+  "name": "buzzcms-rich-text",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -24,7 +25,6 @@
       "pre-commit": "tsdx lint"
     }
   },
-  "name": "buzzcms-rich-text",
   "author": "joehua87",
   "module": "dist/buzzcms-rich-text.esm.js",
   "devDependencies": {
