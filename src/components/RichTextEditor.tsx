@@ -31,7 +31,7 @@ const HOTKEYS: { [key: string]: string } = {
   'mod+`': 'code',
 }
 
-export default function RichText({
+export function RichTextEditor({
   value,
   onChange,
 }: {

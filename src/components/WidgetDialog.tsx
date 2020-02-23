@@ -12,7 +12,7 @@ import { flex } from '../data/flex'
 import { grid } from '../data/grid'
 import { tab } from '../data/tab'
 import { table } from '../data/table'
-import Viewer from './Viewer'
+import { RichTextViewer } from './RichTextViewer'
 
 export interface WidgetItem {
   name: string
@@ -106,7 +106,7 @@ export function WidgetDialog({ onSelectWidget, ...props }: WidgetDialogProps) {
         ))}
       </div>
       <div sx={{ width: '100%' }}>
-        {selected && <Viewer value={selected.data} />}
+        {selected && <RichTextViewer value={selected.data} />}
       </div>
       {selected && (
         <div sx={{ textAlign: 'center' }}>

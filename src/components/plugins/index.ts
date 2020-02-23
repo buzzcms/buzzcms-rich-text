@@ -22,3 +22,14 @@ export function withEditor(editor: Editor) {
     withHistory,
   )(editor)
 }
+
+export {
+  withHistory,
+  withReact,
+  withGalleries,
+  withHtml,
+  withImages,
+  withLinks,
+  withShortcuts,
+  withTabs,
+}

@@ -10,7 +10,7 @@ import { Leaf } from './elements/Leaf'
 import { withEditor } from './plugins'
 import { style } from './style'
 
-export default function Viewer({ value }: { value: Node[] }) {
+export function RichTextViewer({ value }: { value: Node[] }) {
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const editor = useMemo(() => withEditor(createEditor()), [])
