@@ -1,13 +1,12 @@
 {
   "include": ["src", "types", "test"],
   "compilerOptions": {
-    "target": "es5",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -22,10 +21,8 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@": ["./"],
       "*": ["src/*", "node_modules/*"]
     },
-    "downlevelIteration": true,
     "jsx": "react",
     "esModuleInterop": true
   }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Node } from 'slate'
 
-import RichText from '../src/components'
+import { RichTextEditor } from '../src'
 import { accordion } from '../src/data/accordion'
 import { flex } from '../src/data/flex'
 import { full } from '../src/data/full'
@@ -22,7 +22,7 @@ export default {
 
 function Editor({ initialValue }: { initialValue: Node[] }) {
   const [value, setValue] = useState<Node[]>(initialValue)
-  const [isShowInsertDialog, setIsShowInsertDialog] = useState(false)
+  const [, setIsShowInsertDialog] = useState(false)
   return (
     <StoryWrapper>
       <button
@@ -47,7 +47,7 @@ function Editor({ initialValue }: { initialValue: Node[] }) {
       >
         Insert block
       </button>
-      <RichText value={value} onChange={setValue} />
+      <RichTextEditor value={value} onChange={setValue} />
     </StoryWrapper>
   )
 }
