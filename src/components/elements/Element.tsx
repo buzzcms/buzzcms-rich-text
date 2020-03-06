@@ -73,6 +73,8 @@ export function Element(props: RenderElementProps) {
       )
     case 'table-row':
       return <tr {...attributes}>{children}</tr>
+    case 'table-head':
+      return <th {...attributes}>{children}</th>
     case 'table-cell':
       return <td {...attributes}>{children}</td>
     case 'heading-one':
@@ -116,18 +118,7 @@ export function Element(props: RenderElementProps) {
     case 'figure':
       return <figure {...props} sx={{ mx: 'auto', maxWidth: 640 }} />
     case 'figcaption':
-      return (
-        <figcaption
-          sx={{
-            px: 2,
-            py: 1,
-            textAlign: 'center',
-            fontStyle: 'italic',
-            color: 'gray',
-          }}
-          {...props}
-        />
-      )
+      return <figcaption {...props} />
     default:
       return <p {...attributes}>{children}</p>
   }

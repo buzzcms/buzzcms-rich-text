@@ -8,6 +8,7 @@ import { full } from '../src/data/full'
 import { galleries } from '../src/data/galleries'
 import { grid } from '../src/data/grid'
 import { image } from '../src/data/image'
+import { landingPage } from '../src/data/landing-page'
 import { list } from '../src/data/list'
 import { shortcodes } from '../src/data/shortcodes'
 import { single } from '../src/data/single'
@@ -22,7 +23,6 @@ export default {
 
 function Editor({ initialValue }: { initialValue: Node[] }) {
   const [value, setValue] = useState<Node[]>(initialValue)
-  const [, setIsShowInsertDialog] = useState(false)
   return (
     <StoryWrapper>
       <button
@@ -30,22 +30,6 @@ function Editor({ initialValue }: { initialValue: Node[] }) {
         sx={{ display: 'block', width: '100%' }}
       >
         Print
-      </button>
-      <button
-        onClick={() => setIsShowInsertDialog(true)}
-        sx={{
-          cursor: 'pointer',
-          px: 3,
-          py: 2,
-          fontSize: 14,
-          color: 'primary',
-          border: '1 solid',
-          borderColor: 'primary',
-          display: 'block',
-          width: '100%',
-        }}
-      >
-        Insert block
       </button>
       <RichTextEditor value={value} onChange={setValue} />
     </StoryWrapper>
@@ -95,4 +79,8 @@ export const Flex = () => {
 
 export const Grid = () => {
   return <Editor initialValue={grid} />
+}
+
+export const LandingPage = () => {
+  return <Editor initialValue={landingPage} />
 }

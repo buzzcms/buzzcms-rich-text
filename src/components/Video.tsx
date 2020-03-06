@@ -10,7 +10,7 @@ export function Video({ attributes, children, element }: RenderElementProps) {
   return (
     <div {...attributes}>
       <div contentEditable={false}>
-        <ReactPlayer url={url} />
+        <ReactPlayer sx={{ mx: 'auto' }} url={url} />
       </div>
       {children}
     </div>

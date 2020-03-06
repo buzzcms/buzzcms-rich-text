@@ -1,5 +1,5 @@
 export const style = {
-  bg: 'white',
+  bg: '#dedede',
   p: 4,
   maxWidth: 768,
   mx: 'auto',
@@ -49,6 +49,11 @@ export const style = {
     p: 1,
     borderBottom: '2px solid gray',
   },
+  th: {
+    p: 1,
+    textAlign: 'left',
+    borderBottom: '2px solid gray',
+  },
   '[data-reach-accordion-item]': {
     mb: 2,
   },
@@ -64,5 +69,11 @@ export const style = {
     fontSize: 'f5',
     textAlign: 'left',
     border: 'none',
+  },
+  figcaption: {
+    px: 2,
+    py: 1,
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
 }

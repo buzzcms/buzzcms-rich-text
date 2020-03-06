@@ -1,7 +1,14 @@
 /** @jsx jsx */
 
 import isHotkey from 'is-hotkey'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import {
   createEditor,
   Editor,
@@ -32,9 +39,11 @@ const HOTKEYS: { [key: string]: string } = {
 }
 
 export function RichTextEditor({
+  showToolbar,
   value,
   onChange,
 }: {
+  showToolbar?: boolean
   value: Node[]
   onChange: (value: Node[]) => void
 }) {
@@ -62,49 +71,54 @@ export function RichTextEditor({
     >
       <div sx={style}>
         <HoverableToolbar />
-        <Toolbar />
-        <div>
-          <EditorInfo selection={selection} />
-          <button
-            onClick={() => setIsShowInsertDialog(true)}
-            sx={{
-              cursor: 'pointer',
-              px: 3,
-              py: 2,
-              fontSize: 14,
-              color: 'primary',
-              border: '1 solid',
-              borderColor: 'primary',
-            }}
-          >
-            Insert block
-          </button>
-          <button
-            sx={{
-              cursor: 'pointer',
-              px: 3,
-              py: 2,
-              fontSize: 14,
-              color: 'firebrick',
-              border: '1px solid',
-              borderColor: 'firebrick',
-              ml: 2,
-            }}
-            onClick={() => {
-              console.log(selection?.anchor)
-              const ele = Editor.above(editor, {
-                match: x => SlateElement.isElement(x),
-              })
-              if (ele) {
-                const [, path] = ele
-                console.log(path)
-                Transforms.delete(editor, { at: path })
-              }
-            }}
-          >
-            Delete selected
-          </button>
-        </div>
+        {showToolbar && (
+          <Fragment>
+            <Toolbar />
+            <div>
+              <button
+                onClick={() => setIsShowInsertDialog(true)}
+                sx={{
+                  cursor: 'pointer',
+                  px: 3,
+                  py: 2,
+                  fontSize: 14,
+                  color: 'primary',
+                  border: '1 solid',
+                  borderColor: 'primary',
+                }}
+              >
+                Insert block
+              </button>
+              <button
+                sx={{
+                  cursor: 'pointer',
+                  px: 3,
+                  py: 2,
+                  fontSize: 14,
+                  color: 'firebrick',
+                  border: '1px solid',
+                  borderColor: 'firebrick',
+                  ml: 2,
+                }}
+                onClick={() => {
+                  console.log(selection?.anchor)
+                  const ele = Editor.above(editor, {
+                    match: x => SlateElement.isElement(x),
+                  })
+                  if (ele) {
+                    const [, path] = ele
+                    console.log(path)
+                    Transforms.delete(editor, { at: path })
+                  }
+                }}
+              >
+                Delete selected
+              </button>
+            </div>
+          </Fragment>
+        )}
+
+        <EditorInfo selection={selection} />
         <WidgetDialog
           isOpen={isShowInsertDialog}
           onSelectWidget={widget => {
@@ -120,11 +134,12 @@ export function RichTextEditor({
           }}
         />
         <Editable
+          sx={{ bg: 'white', p: 3 }}
           renderElement={renderElement}
           renderLeaf={renderLeaf}
           placeholder="Write some markdown..."
           spellCheck
-          autoFocus
+          // autoFocus
           onKeyDown={event => {
             if (isInTableCell(editor)) {
               if (event.key === 'Tab') {
