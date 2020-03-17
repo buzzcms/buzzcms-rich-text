@@ -2,30 +2,17 @@ import isImage from 'is-image'
 import { Editor, Element, Transforms } from 'slate'
 import { ReactEditor } from 'slate-react'
 
-export const insertImage = (
-  editor: ReactEditor,
-  url: string,
-  insertBlock = false,
-) => {
-  const text = { text: '' }
-  const image = { type: 'img', src: url, children: [text] }
-  if (insertBlock) {
-    Transforms.insertNodes(editor, image)
-  }
-  Transforms.setNodes(editor, image)
-}
+import { getAboveBlockType } from './withShortcuts'
 
-export const insertImageById = (
-  editor: ReactEditor,
-  id: string,
-  insertBlock = false,
-) => {
-  const text = { text: '' }
-  const image = { type: 'image', id, children: [text] }
-  if (insertBlock) {
-    Transforms.insertNodes(editor, image)
+export const insertImage = (editor: ReactEditor, url: string) => {
+  const image = {
+    type: 'figure',
+    children: [
+      { type: 'image', src: url, children: [{ text: '' }] },
+      { type: 'figcaption', children: [{ text: 'Enter your caption' }] },
+    ],
   }
-  Transforms.setNodes(editor, image)
+  Transforms.insertNodes(editor, image)
 }
 
 function isAbleToPasteImage(editor: ReactEditor) {
@@ -35,15 +22,20 @@ function isAbleToPasteImage(editor: ReactEditor) {
 }
 
 export function withImages(editor: ReactEditor) {
-  const { insertData, isVoid } = editor
+  const { insertData, isVoid, insertBreak } = editor
   editor.isVoid = element => {
-    return ['image', 'img'].includes(element.type) ? true : isVoid(element)
-    // return element.type === 'image' ? true : isVoid(element)
+    return element.type === 'image' ? true : isVoid(element)
   }
 
+  editor.insertBreak = () => {
+    const type = getAboveBlockType(editor)
+    insertBreak()
+    if (type === 'figcaption') {
+      Transforms.liftNodes(editor)
+    }
+  }
   editor.insertData = data => {
     const text = data.getData('text/plain')
-    // TODO: Try upload image before insert
     const { files } = data
     if (files && files.length > 0) {
       for (const file of files as any) {

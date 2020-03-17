@@ -99,7 +99,7 @@ export function Element(props: RenderElementProps) {
       return <TabPanel {...props} />
     case 'video':
       return <Video {...props} />
-    case 'img':
+    case 'image':
       return (
         <div {...attributes}>
           <div contentEditable={false}>

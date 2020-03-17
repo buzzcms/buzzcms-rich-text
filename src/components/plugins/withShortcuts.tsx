@@ -19,7 +19,7 @@ export const SHORTCUTS: {
   '######': 'heading-six',
 }
 
-function getBlockText(editor: ReactEditor) {
+export function getBlockText(editor: ReactEditor) {
   const block = Editor.above(editor, {
     match: n => Editor.isBlock(editor, n),
   })
@@ -27,7 +27,7 @@ function getBlockText(editor: ReactEditor) {
   return Editor.string(editor, path)
 }
 
-const isEnd = (editor: ReactEditor) => {
+export const isEnd = (editor: ReactEditor) => {
   if (!editor.selection) {
     return false
   }
@@ -35,7 +35,7 @@ const isEnd = (editor: ReactEditor) => {
   return Editor.isEnd(editor, anchor, anchor.path)
 }
 
-function getAboveBlockType(editor: ReactEditor) {
+export function getAboveBlockType(editor: ReactEditor) {
   const tmp = Editor.above(editor, {
     match: n => Editor.isBlock(editor, n),
   })
@@ -93,26 +93,26 @@ export function withShortcuts(editor: ReactEditor) {
   editor.insertBreak = () => {
     if (!isEnd(editor)) {
       insertBreak()
-    } else {
-      const type = getAboveBlockType(editor)
-      if (type === 'list-item') {
-        const text = getBlockText(editor)
-        if (text !== '') {
-          insertBreak()
-          return
-        }
-        Transforms.setNodes(editor, {
-          type: 'paragraph',
-          children: [{ text: '' }],
-        })
-        Transforms.liftNodes(editor)
+      return
+    }
+    const type = getAboveBlockType(editor)
+    if (type === 'list-item') {
+      const text = getBlockText(editor)
+      if (text !== '') {
+        insertBreak()
         return
       }
-      Transforms.insertNodes(editor, {
+      Transforms.setNodes(editor, {
         type: 'paragraph',
         children: [{ text: '' }],
       })
+      Transforms.liftNodes(editor)
+      return
     }
+    Transforms.insertNodes(editor, {
+      type: 'paragraph',
+      children: [{ text: '' }],
+    })
   }
   return editor
 }
