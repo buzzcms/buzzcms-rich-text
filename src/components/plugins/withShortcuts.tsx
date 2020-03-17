@@ -56,6 +56,14 @@ export function withShortcuts(editor: ReactEditor) {
       const range = { anchor, focus: start }
       const beforeText = Editor.string(editor, range)
       const type = SHORTCUTS[beforeText]
+      if (
+        type === 'numbered-list-item' &&
+        block &&
+        block[0]?.type?.startsWith('heading-')
+      ) {
+        insertText(text)
+        return
+      }
       if (type) {
         Transforms.select(editor, range)
         Transforms.delete(editor)
