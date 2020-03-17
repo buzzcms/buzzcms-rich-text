@@ -14,6 +14,7 @@ const ELEMENT_TAGS: { [key: string]: any } = {
   LI: () => ({ type: 'list-item' }),
   OL: () => ({ type: 'numbered-list' }),
   P: () => ({ type: 'paragraph' }),
+  DIV: () => ({ type: 'paragraph' }),
   PRE: () => ({ type: 'code' }),
   UL: () => ({ type: 'bulleted-list' }),
 }
@@ -30,6 +31,7 @@ const TEXT_TAGS: { [key: string]: any } = {
   I: () => ({ italic: true }),
   S: () => ({ strikethrough: true }),
   STRONG: () => ({ bold: true }),
+  B: () => ({ bold: true }),
   U: () => ({ underline: true }),
 }
 
