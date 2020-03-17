@@ -11,12 +11,15 @@ const ELEMENT_TAGS: { [key: string]: any } = {
   H4: () => ({ type: 'heading-four' }),
   H5: () => ({ type: 'heading-five' }),
   H6: () => ({ type: 'heading-six' }),
-  IMG: (el: any) => ({ type: 'image', url: el.getAttribute('src') }),
   LI: () => ({ type: 'list-item' }),
   OL: () => ({ type: 'numbered-list' }),
   P: () => ({ type: 'paragraph' }),
   PRE: () => ({ type: 'code' }),
   UL: () => ({ type: 'bulleted-list' }),
+}
+
+const IMAGE_TAGS: { [key: string]: any } = {
+  IMG: (el: any) => ({ type: 'image', src: el.getAttribute('src') }),
 }
 
 // COMPAT: `B` is omitted here because Google Docs uses `<b>` in weird ways.
@@ -63,9 +66,24 @@ export const deserialize = (el: any) => {
     return jsx('element', attrs, children)
   }
 
+  if (IMAGE_TAGS[nodeName]) {
+    const attrs = IMAGE_TAGS[nodeName](el)
+    return {
+      type: 'figure',
+      children: [
+        jsx('element', attrs, children),
+        { type: 'figcaption', children: [{ text: 'Enter your caption' }] },
+      ],
+    }
+  }
+
   if (TEXT_TAGS[nodeName]) {
     const attrs = TEXT_TAGS[nodeName](el)
-    return children.map(child => jsx('text', attrs, child))
+    return children
+      .filter(x => typeof x === 'string')
+      .map(child => {
+        return jsx('text', attrs, child)
+      })
   }
 
   return children
@@ -78,11 +96,19 @@ export const withHtml = (editor: ReactEditor) => {
 
     if (html) {
       const parsed = new DOMParser().parseFromString(html, 'text/html')
-      const fragment = deserialize(parsed.body)
+      const fragment = deserialize(parsed.body).map((x: any) => {
+        if (!x.children) {
+          return x
+        }
+        // Fix <p><img /></p> from source data; <figure /> cannot be nested in <p />
+        if (x.children[0]?.type === 'figure') {
+          return x.children[0]
+        }
+        return x
+      })
       Transforms.insertFragment(editor, fragment)
       return
     }
-
     insertData(data)
   }
 
