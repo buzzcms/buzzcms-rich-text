@@ -19,7 +19,7 @@ import { BlockButton } from './BlockButton'
 import { Portal } from './HoverableToolbar'
 import { MarkButton } from './MarkButton'
 
-export function Toolbar() {
+export function Toolbar(props: Omit<JSX.IntrinsicElements['div'], 'ref'>) {
   const editor = useSlate()
   const [isShow, setIsShow] = useState(false)
   useEffect(() => {
@@ -36,11 +36,12 @@ export function Toolbar() {
   return (
     <Portal>
       {transitions.map(
-        ({ item, key, props }) =>
+        ({ item, key, props: style }) =>
           item && (
             <animated.div
               key={key}
-              style={props}
+              style={style}
+              {...props}
               sx={{
                 bg: '#222',
                 p: 2,

@@ -21,7 +21,9 @@ export const Portal = ({ children }: { children: ReactNode }) => {
   return createPortal(children, document.body)
 }
 
-export function HoverableToolbar() {
+export function HoverableToolbar(
+  props: Omit<JSX.IntrinsicElements['div'], 'ref'>,
+) {
   const editor = useSlate()
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -56,6 +58,7 @@ export function HoverableToolbar() {
     <Portal>
       <div
         ref={ref}
+        {...props}
         sx={{
           position: 'absolute',
           p: 1,
